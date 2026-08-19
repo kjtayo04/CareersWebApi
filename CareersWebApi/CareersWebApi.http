@@ -1,6 +1,0 @@
-@CareersWebApi_HostAddress = http://localhost:5064
-
-GET {{CareersWebApi_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
