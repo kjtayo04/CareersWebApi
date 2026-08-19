@@ -1,8 +1,9 @@
 using System.Text.Json;
+using CareersWebApi.Mappers;
 using CareersWebApi.Models;
 using Microsoft.Extensions.Caching.Memory;
 
-namespace CareersWebApi.Repositories;
+namespace CareersWebApi.Repositories.JobRepository;
 
 /// <summary>
 /// Fetches jobs from the Greenhouse public boards API and exposes them via IJobRepository.
@@ -145,9 +146,5 @@ public class GreenhouseJobRepository : IJobRepository
         };
     }
 
-    public async Task<JobDetail?> GetJobByIdAsync(int id)
-    {
-        var list = await FetchAllJobsAsync();
-        return list.FirstOrDefault(j => j.Id == id);
-    }
+
 }

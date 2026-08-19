@@ -1,4 +1,5 @@
 using CareersWebApi.Models;
+using CareersWebApi.Repositories.JobRepository;
 
 namespace CareersWebApi.Repositories;
 
@@ -59,8 +60,5 @@ public class InMemoryJobRepository : IJobRepository
         return Task.FromResult(result);
     }
 
-    public Task<JobDetail?> GetJobByIdAsync(int id)
-    {
-        return Task.FromResult(_jobs.FirstOrDefault(j => j.Id == id));
-    }
+    
 }
