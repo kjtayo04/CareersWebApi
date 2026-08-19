@@ -3,7 +3,7 @@ using CareersWebApi.Entities;
 using CareersWebApi.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace CareersWebApi.Repositories;
+namespace CareersWebApi.Repositories.JobRepository;
 
 public class EfJobRepository : IJobRepository
 {
@@ -50,19 +50,5 @@ public class EfJobRepository : IJobRepository
         };
     }
 
-    public async Task<JobDetail?> GetJobByIdAsync(int id)
-    {
-        var j = await _db.Jobs.FirstOrDefaultAsync(x => x.Id == id);
-        if (j == null) return null;
-        return new JobDetail
-        {
-            Id = j.Id,
-            Title = j.Title,
-            Location = j.Location,
-            Department = j.Department,
-            PublishedAt = j.PublishedAt,
-            AbsoluteUrl = j.AbsoluteUrl,
-            Content = j.Content
-        };
-    }
+   
 }

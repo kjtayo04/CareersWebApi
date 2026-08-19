@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using System.Linq;
+using CareersWebApi.Repositories.JobRepository;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,7 +18,7 @@ builder.Services.AddDbContext<CareersWebApi.Data.AppDbContext>(options =>
 // By default use the Greenhouse-backed repository which fetches jobs from the external boards API.
 builder.Services.AddMemoryCache();
 // Register GreenhouseJobRepository as the IJobRepository and configure its HttpClient
-builder.Services.AddHttpClient<CareersWebApi.Repositories.IJobRepository, CareersWebApi.Repositories.GreenhouseJobRepository>(client =>
+builder.Services.AddHttpClient<IJobRepository, GreenhouseJobRepository>(client =>
 {
     client.BaseAddress = new Uri(builder.Configuration["Greenhouse:BaseUrl"] ?? "https://boards-api.greenhouse.io");
 });

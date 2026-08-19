@@ -1,5 +1,5 @@
 using CareersWebApi.Models;
-using CareersWebApi.Repositories;
+using CareersWebApi.Repositories.JobRepository;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 
@@ -47,22 +47,5 @@ public class JobsController : ControllerBase
         return Ok(result);
     }
 
-    /// <summary>
-    /// Returns full job detail including HTML content for the given id.
-    /// </summary>
-    [HttpGet("{id:int}")]
-    [ProducesResponseType(typeof(JobDetail), 200)]
-    [ProducesResponseType(typeof(ProblemDetails), 404)]
-    [SwaggerOperation(Summary = "Get job detail by id")]
-    public async Task<ActionResult<JobDetail>> GetById(int id)
-    {
-        if (id <= 0) return BadRequest(new ProblemDetails { Title = "Invalid id", Detail = "id must be a positive integer", Status = 400 });
-        var job = await _repo.GetJobByIdAsync(id);
-        if (job == null)
-        {
-            return NotFound(new ProblemDetails { Title = "Not Found", Detail = $"Job with id {id} not found", Status = 404 });
-        }
-
-        return Ok(job);
-    }
+    
 }

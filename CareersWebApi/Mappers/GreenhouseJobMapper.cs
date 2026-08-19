@@ -2,7 +2,7 @@ using System;
 using System.Text.Json;
 using CareersWebApi.Models;
 
-namespace CareersWebApi.Repositories;
+namespace CareersWebApi.Mappers;
 
 internal static class GreenhouseJobMapper
 {
