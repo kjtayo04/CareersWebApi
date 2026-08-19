@@ -35,10 +35,10 @@ public class GreenhouseJobRepository : IJobRepository
 
     private async Task<List<JobDetail>> FetchAllJobsAsync(CancellationToken ct = default)
     {
-        //if (_cache.TryGetValue(JobsCacheKey, out List<JobDetail>? cached) && cached != null)
-        //{
-        //    return cached;
-        //}
+        if (_cache.TryGetValue(JobsCacheKey, out List<JobDetail>? cached) && cached != null)
+        {
+            return cached;
+        }
 
         try
         {
